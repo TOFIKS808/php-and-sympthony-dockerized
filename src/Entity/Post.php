@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\PostRepository;
@@ -10,11 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Post
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "SEQUENCE")]
-    #[ORM\SequenceGenerator(sequenceName: "id")]
+    #[ORM\GeneratedValue(strategy: 'SEQUENCE')]
+    #[ORM\SequenceGenerator(sequenceName: 'id')]
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
-
 
     #[ORM\Column(length: 1000)]
     private ?string $title = null;
