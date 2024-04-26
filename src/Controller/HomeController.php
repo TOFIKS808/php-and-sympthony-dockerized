@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Post;
@@ -16,16 +18,16 @@ class HomeController extends AbstractController
     {
         $post = new Post();
         $post
-//            ->setUserId(1)
             ->setTitle('Symfony test')
             ->setBody('Symfony test lorem ipsum');
 
         $entityManager->persist($post);
         $entityManager->flush();
 
-
         return $this->render('home/index.html.twig', [
-            'posts' => $postRepo->findAll(),
+            'posts' => $postRepo->findBy([], [
+                'id' => 'DESC',
+            ]),
         ]);
     }
 }

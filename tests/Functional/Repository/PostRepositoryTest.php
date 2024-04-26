@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Functional\Repository;
@@ -6,12 +7,13 @@ namespace App\Tests\Functional\Repository;
 use App\Repository\PostRepository;
 use App\Tests\Functional\FunctionalTestCase;
 
-
 class PostRepositoryTest extends FunctionalTestCase
 {
-    public function test_find_all(): void
+    public function testFindAll(): void
     {
-        $repository = $this->getTestContainer()->get(PostRepository::class);
-        dump($repository);
+        /** @var PostRepository$repository */
+        $repository = $this->getTestContainer()
+            ->get(PostRepository::class);
+        $this->assertInstanceOf(PostRepository::class, $repository);
     }
 }
