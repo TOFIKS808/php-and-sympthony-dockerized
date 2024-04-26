@@ -2,18 +2,15 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\Table(name: 'post')]
+#[ApiResource]
 class Post
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "SEQUENCE")]
-    #[ORM\SequenceGenerator(sequenceName: "id")]
-    #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
 
 
     #[ORM\Column(length: 1000)]
@@ -22,17 +19,7 @@ class Post
     #[ORM\Column(length: 1000)]
     private ?string $body = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
     public function getTitle(): ?string
     {

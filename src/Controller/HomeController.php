@@ -25,7 +25,7 @@ class HomeController extends AbstractController
 
 
         return $this->render('home/index.html.twig', [
-            'posts' => $postRepo->findAll(),
+            'posts' => $postRepo->findBy([], ['id' => 'DESC']),
         ]);
     }
 }
